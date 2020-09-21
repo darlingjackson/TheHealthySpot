@@ -1,0 +1,40 @@
+﻿@model ContactViewModel
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+<img src="img/blue.jpg" id="bgimg" />
+<div class="container-fluid">
+    <div class="col-md-6 offset-md-3">
+        <!--<div class="card card-body bg-light">-->
+            <form class="form-container" method="post">
+                <!--The post metethod lets the form know to post back to the server. you have to create the post in your controller-->
+                <div asp-validation-summary="ModelOnly"></div>
+                <h1 id="boxTitle">Contact Us</h1>
+                <div class="form-group ">
+                    <label asp-for="Name">Your Name:</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email">Email:</label>
+                    <input asp-for="Email" type="email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Subject">Subject:</label>
+                    <input asp-for="Subject" type="text" class="form-control" />
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message">Message:</label>
+                    <textarea asp-for="Message" rows="4" class="form-control"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="custom-btn btn16"><i class="fa fa-envelope"></i> Send Message</button>
+                    <div class="text-success">@ViewBag.UserMessage</div> <!--This allows the "sent mail" message to show-->
+                </div>
+            </form>
+        </div>
+    </div>
